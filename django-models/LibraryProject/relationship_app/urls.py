@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from .views import list_books
 views.register
-LoginView.as_view(templates='login')
-LogoutView.as_view(templates='logout')
+
 
 urlpatterns = [
-    LoginView.as_view(templates='login')
-    LogoutView.as_view(templates='logout')
+    
+    path('login/', LoginView.as_view(templates='login'))
+    path('login/', LogoutView.as_view(templates='logout'))
     path('books/', list_books, name='list_books'),
     path('library/<int:pk>/', LibraryDetailView.as_view(), name='library_detail'),
 ]
