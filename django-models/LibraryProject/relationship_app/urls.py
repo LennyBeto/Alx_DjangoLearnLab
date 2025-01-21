@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .admin_view import admin_view
-from .librarian_view import librarian_view
-from .member_view import member_view
+from .views.admin_view import admin_view
+from .views.librarian_view import librarian_view
+from .views.member_view import member_view
 from .views import list_books
 from .templates import register.html
 from .templates import login.html
