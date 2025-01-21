@@ -21,8 +21,9 @@ from .views import list_books
 
 urlpatterns = [
 
-    path('register/', views.register(register.html='register'))
-    path('login/', LoginView.as_view(login.html='login'))
+    path('register/', views.register, name='register')
+    path('login/', LoginView.as_view(login.html='templates/login.html'), name='login'),
+    
     path('logout/', LogoutView.as_view(logout.html='logout'))
     path('books/', list_books, name='list_books'),
     path('library/<int:pk>/', LibraryDetailView.as_view(), name='library_detail'),
