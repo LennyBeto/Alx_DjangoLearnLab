@@ -16,13 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from .views import list_books
-views.register
+
 
 
 urlpatterns = [
-    
-    path('login/', LoginView.as_view(templates='login'))
-    path('login/', LogoutView.as_view(templates='logout'))
+
+    path('register/', views.register(register.html='register'))
+    path('login/', LoginView.as_view(login.html='login'))
+    path('logout/', LogoutView.as_view(logout.html='logout'))
     path('books/', list_books, name='list_books'),
     path('library/<int:pk>/', LibraryDetailView.as_view(), name='library_detail'),
 ]
