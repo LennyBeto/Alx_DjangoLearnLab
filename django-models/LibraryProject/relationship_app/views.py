@@ -4,14 +4,14 @@ from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, redirect
 from .models import Book
 
-@permission_required('your_app_name.can_add_book')
+@permission_required('relationship_app.can_add_book')
 def add_book(request):
     if request.method == 'POST':
         # Logic to add the book
         return redirect('book_list')
     return render(request, 'add_book.html')
 
-@permission_required('your_app_name.can_change_book')
+@permission_required('relationship_app.can_change_book')
 def edit_book(request, book_id):
     book = Book.objects.get(id=book_id)
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def edit_book(request, book_id):
         return redirect('book_list')
     return render(request, 'edit_book.html', {'book': book})
 
-@permission_required('your_app_name.can_delete_book')
+@permission_required('relationship_app.can_delete_book')
 def delete_book(request, book_id):
     book = Book.objects.get(id=book_id)
     if request.method == 'POST':
