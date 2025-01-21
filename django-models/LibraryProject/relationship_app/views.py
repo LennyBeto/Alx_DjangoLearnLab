@@ -1,9 +1,31 @@
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-
-from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required
+from django.shortcuts import render, redirect
 from .models import Book
 
+@permission_required('your_app_name.can_add_book')
+def add_book(request):
+    if request.method == 'POST':
+        # Logic to add the book
+        return redirect('book_list')
+    return render(request, 'add_book.html')
+
+@permission_required('your_app_name.can_change_book')
+def edit_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        # Logic to edit the book
+        return redirect('book_list')
+    return render(request, 'edit_book.html', {'book': book})
+
+@permission_required('your_app_name.can_delete_book')
+def delete_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        book.delete()
+        return redirect('book_list')
+    return render(request, 'delete_book.html', {'book': book})
 def list_books(request):
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
