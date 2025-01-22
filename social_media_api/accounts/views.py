@@ -8,15 +8,15 @@ from .serializers import UserSerializer
 from django.urls import path
 from .views import FollowUser, UnfollowUser, FeedView
 
-class FollowUser(generics.UpdateAPIView):
+class FollowUser(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, user_id):
-        user_to_follow = CustomUser.objects.get(id=user_id)
+        user_to_follow = CustomUser.objects.all(id=user_id)
         request.user.following.add(user_to_follow)
         return Response({"message": "You are now following this user."})
 
-class UnfollowUser(generics.UpdateAPIView):
+class UnfollowUser(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, user_id):
