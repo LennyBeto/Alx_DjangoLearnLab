@@ -83,18 +83,12 @@ WSGI_APPLICATION = 'social_media_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # or your database engine
-        'NAME': 'your_database_name',
+       'ENGINE': 'django.db.backends.sqlite3',  # or your database engine
+          'NAME': BASE_DIR / 'db.sqlite3',
         'USER': 'your_database_user',  # Add your database user here
         'PASSWORD': 'your_database_password',
         'HOST': 'localhost',  # or your database host
-        'PORT': '5432',  # Default PostgreSQL port; change if needed
+        'PORT': '5432',  # Default sqlite3 port; change if needed
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -130,8 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
 
+import os
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Adjust the path as needed
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
