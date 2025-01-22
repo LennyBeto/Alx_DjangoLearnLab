@@ -9,6 +9,8 @@ class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     permission_classes = [permissions.IsAuthenticated]
 
+def get_object(self):
+        return generics.get_object_or_404(Post, pk=self.kwargs['pk'])
 
 @api_view(['POST'])
 def like_post(request, pk):
