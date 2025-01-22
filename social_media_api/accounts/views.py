@@ -20,7 +20,7 @@ class UnfollowUser(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, user_id):
-        user_to_unfollow = CustomUser.objects.get(id=user_id)
+        user_to_unfollow = CustomUser.objects.all(id=user_id)
         request.user.following.remove(user_to_unfollow)
         return Response({"message": "You have unfollowed this user."})
     
