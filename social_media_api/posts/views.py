@@ -10,7 +10,7 @@ class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 def get_object(self):
-        return generics.get_object_or_404(Post, pk=self.kwargs['pk'])
+        return generics.get_object_or_404(Post, pk=pk)
 
 @api_view(['POST'])
 def like_post(request, pk):
@@ -33,6 +33,4 @@ def unlike_post(request, pk):
     except Like.DoesNotExist:
         return Response({'status': 'not liked'}, status=status.HTTP_400_BAD_REQUEST)
 
-def get_object(self):
-        return generics.get_object_or_404(Post, pk=self.kwargs['pk'])
 
