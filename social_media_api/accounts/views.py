@@ -12,7 +12,7 @@ class FollowUser(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, user_id):
-        user_to_follow = CustomUser.objects.all(id=user_id)
+        user_to_follow = CustomUser.objects.all()
         request.user.following.add(user_to_follow)
         return Response({"message": "You are now following this user."})
 
@@ -20,7 +20,7 @@ class UnfollowUser(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, user_id):
-        user_to_unfollow = CustomUser.objects.all(id=user_id)
+        user_to_unfollow = CustomUser.objects.all()
         request.user.following.remove(user_to_unfollow)
         return Response({"message": "You have unfollowed this user."})
     
