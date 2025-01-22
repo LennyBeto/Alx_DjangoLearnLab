@@ -21,5 +21,6 @@ from django.urls import posts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', api.site.urls)
+    path('api/', api.site.urls),
+    path('posts/', posts.urls),
 ]
