@@ -110,6 +110,20 @@ def post_detail(request, post_id):
         form = CommentForm()
     return render(request, 'post_detail.html', {'post': post, 'comments': comments, 'form': form})
 
+class CommentCreateView(CreateView):
+    model = Comment
+    # Add your fields and success URL here
+template_name = 'blog/post_detail.html'
+       success_url = '/posts/'
+
+class CommentUpdateView(UpdateView):
+    model = Comment
+    # Add your fields and success URL here
+
+class CommentDeleteView(DeleteView):
+    model = Comment
+    # Add your success URL here
+
 @login_required
 def edit_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
