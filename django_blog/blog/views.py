@@ -41,8 +41,8 @@ def profile(request):
 # Blog Post Views
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/post_list.html'  # Specify your template name
-    context_object_name = 'posts'  # Default is 'object_list'
+    template_name = 'blog/post_list.html' 
+    context_object_name = 'posts'  
 
 class PostDetailView(DetailView):
     model = Post
@@ -57,11 +57,11 @@ class PostCreateView(CreateView):
 
 class PostUpdateView(UpdateView):
     model = Post
-    template_name = 'blog/post_form.html'  # Specify your template name
-    fields = ['title', 'content']  # Specify the fields to include in the form
-    success_url = reverse_lazy('post-list')  # Redirect after successful update
+    template_name = 'blog/post_form.html'  
+    fields = ['title', 'content']  
+    success_url = reverse_lazy('post-list')  
 
 class PostDeleteView(DeleteView):
     model = Post
-    template_name = 'blog/post_confirm_delete.html'  # Specify your template name
+    template_name = 'blog/post_confirm_delete.html'  
     success_url = reverse_lazy('post-list') 
