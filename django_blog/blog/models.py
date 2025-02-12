@@ -43,6 +43,6 @@ class Post(models.Model):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content', 'tags']  # Include 'tags' here
+        fields = ['title', 'content', 'tags']  
 
-    tags = forms.CharField(required=False)  # Optional field for tags
+    tags = forms.CharField(required=False)  
