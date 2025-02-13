@@ -40,5 +40,5 @@ class LibraryDetailView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['books'] = self.object.books.all()  # Assuming a related name for books
+        context['books'] = self.object.books.all() 
         return context
